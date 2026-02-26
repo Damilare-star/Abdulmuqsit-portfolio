@@ -34,72 +34,9 @@ const ScrollProgress = () => {
   );
 };
 
-// Custom Cursor
-const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isPointer, setIsPointer] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      
-      const target = e.target;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === 'pointer' ||
-        target.tagName === 'A' ||
-        target.tagName === 'BUTTON'
-      );
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return (
-    <>
-      <div
-        className="cursor-dot"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`
-        }}
-      />
-      <div
-        className="cursor-outline"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`
-        }}
-      />
-    </>
-  );
-};
-
-// Page Transition Wrapper
-const PageTransition = ({ children }) => {
-  const location = useLocation();
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.3 }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
-};
-
 function AppContent() {
   return (
-    <div className="custom-cursor">
-      <CustomCursor />
+    <div>
       <ScrollProgress />
       <Navbar />
       <PageTransition>

@@ -23,7 +23,11 @@ const ProjectCard = ({ project, index }) => {
         <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+        <p className="text-gray-600 dark:text-gray-400 mb-4 overflow-hidden" style={{
+          display: '-webkit-box',
+          WebkitLineClamp: 3,
+          WebkitBoxOrient: 'vertical'
+        }}>
           {project.description}
         </p>
 
