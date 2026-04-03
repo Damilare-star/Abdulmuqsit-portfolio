@@ -1,4 +1,5 @@
 import Hero from '../components/Hero';
+import FeaturedProject from '../components/FeaturedProject';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
@@ -10,6 +11,7 @@ const Home = () => {
     <>
       <ThreeBackground />
       <Hero />
+      <FeaturedProject />
       <About />
       <Skills />
       <Projects />

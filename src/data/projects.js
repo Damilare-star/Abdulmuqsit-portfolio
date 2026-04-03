@@ -1,5 +1,18 @@
 export const projects = [
   {
+    id: 0,
+    title: "Radiology Management Dashboard",
+    description: "A full-stack healthcare dashboard to manage patient records, scan workflows, and reporting in a radiology environment — built with Firebase and React.",
+    problem: "Radiology departments rely on paper-based or fragmented systems, leading to workflow errors and delays in patient care.",
+    solution: "Built a secure, role-protected dashboard centralizing patient records, scan tracking, and data visualization in one clean interface.",
+    result: "Simulates a real-world hospital system — improving workflow organization and reducing manual record errors through structured data management.",
+    role: "Solo Designer & Developer",
+    image: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80",
+    tech: ["React", "Tailwind CSS", "Firebase", "Recharts"],
+    liveDemo: "https://radiology-dashboard.vercel.app/",
+    github: "https://github.com/Damilare-star/radiology-dashboard"
+  },
+  {
     id: 1,
     title: "E-Commerce Platform",
     description: "Full-featured shopping platform with cart, checkout, and Stripe payment integration. Built for a smooth, fast end-to-end purchase experience.",
@@ -53,19 +66,6 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Developer Portfolio",
-    description: "This portfolio — built to stand out with a 3D star background, smooth animations, and a clear showcase of skills and projects.",
-    problem: "Needed a portfolio that goes beyond a basic template and actually communicates value to recruiters.",
-    solution: "Used Three.js for the animated star background, Framer Motion for transitions, and structured case studies for each project.",
-    result: "A portfolio that clearly communicates skills, personality, and project depth — not just a list of links.",
-    role: "Designer & Developer",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
-    tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-    liveDemo: "https://abdulmuqsit-portfolio-jhpm.vercel.app/",
-    github: "https://github.com/Damilare-star/Abdulmuqsit-portfolio.git"
-  },
-  {
-    id: 6,
     title: "Savoria Restaurant",
     description: "Modern restaurant website with an appetizing design, menu showcase, and reservation flow — built mobile-first for on-the-go diners.",
     problem: "Restaurant had no website and was missing customers who searched online before deciding where to eat.",
