@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaDownload } from 'react-icons/fa';
+import { FaDownload, FaCode, FaRocket, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const ref = useRef(null);
@@ -22,49 +23,91 @@ const About = () => {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-14 items-start">
+
+          {/* Left — Story */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl sm:text-3xl font-bold mb-6 gradient-text">
-              Frontend Developer - Available to Work
+            <h3 className="text-xl sm:text-2xl font-bold mb-5 text-white">
+              My Story
             </h3>
-            <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
-              I'm a passionate frontend developer with a keen eye for design and a love for creating 
-              seamless user experiences. With expertise in React, Tailwind CSS, and modern web technologies, 
-              I transform ideas into beautiful, functional applications.
+            <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+              I'm a self-driven Frontend Developer based in <span className="text-white font-medium">Nigeria</span>,
+              who started coding out of pure curiosity — wanting to understand how websites actually work.
+              That curiosity turned into a skill, and that skill turned into a career path I'm fully committed to.
             </p>
-            <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
-              My journey in web development started with a curiosity about how things work on the web, 
-              and it has evolved into a professional career where I continuously learn and adapt to new 
-              technologies and best practices.
+            <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+              I specialize in building <span className="text-primary font-medium">React-based web applications</span> that
+              are fast, accessible, and visually polished. I care deeply about the user experience — not just
+              making things look good, but making them work well on every device.
             </p>
-            <div className="space-y-3 sm:space-y-4 mb-8">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                <span className="text-primary font-semibold sm:min-w-[120px]">Location:</span>
-                <span className="text-gray-300">Nigeria</span>
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                <span className="text-primary font-semibold sm:min-w-[120px]">Email:</span>
-                <a href="mailto:abdulmuqsitabdulquadri@gmail.com" className="text-gray-300 hover:text-primary transition-colors break-all">
-                  abdulmuqsitabdulquadri@gmail.com
-                </a>
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                <span className="text-primary font-semibold sm:min-w-[120px]">Status:</span>
-                <span className="text-green-400 font-medium">✓ Available to Work</span>
-              </div>
+            <p className="text-gray-300 text-sm sm:text-base mb-8 leading-relaxed">
+              Right now I'm actively looking for <span className="text-white font-medium">freelance projects</span> and
+              <span className="text-white font-medium"> full-time frontend roles</span> — remote or on-site.
+              If you need someone who ships clean, maintainable code and communicates well, let's talk.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/contact"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105 text-sm"
+              >
+                Hire Me
+              </Link>
+              <a
+                href="/cv.pdf"
+                download
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 border border-white/20 rounded-xl text-white font-semibold hover:border-primary/50 transition-all duration-300 text-sm"
+              >
+                <FaDownload className="text-xs" />
+                Download CV
+              </a>
             </div>
-            <a
-              href="/cv.pdf"
-              download
-              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-secondary rounded-2xl text-white font-semibold hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
-            >
-              <FaDownload />
-              Download CV
-            </a>
+          </motion.div>
+
+          {/* Right — Details + What makes me different */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
+            {/* Quick info */}
+            <div className="glass rounded-2xl p-5 sm:p-6 space-y-3">
+              {[
+                { label: 'Location', value: 'Nigeria (Open to Remote)' },
+                { label: 'Email', value: 'abdulmuqsitabdulquadri@gmail.com', href: 'mailto:abdulmuqsitabdulquadri@gmail.com' },
+                { label: 'Status', value: '✓ Available to Work', green: true },
+                { label: 'Focus', value: 'React · Tailwind CSS · Frontend' },
+              ].map(({ label, value, href, green }) => (
+                <div key={label} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-sm">
+                  <span className="text-primary font-semibold min-w-[80px]">{label}:</span>
+                  {href ? (
+                    <a href={href} className="text-gray-300 hover:text-primary transition-colors break-all">{value}</a>
+                  ) : (
+                    <span className={green ? 'text-green-400 font-medium' : 'text-gray-300'}>{value}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* What makes me different */}
+            <div className="space-y-3">
+              <h4 className="text-white font-semibold text-sm uppercase tracking-wider">What makes me different</h4>
+              {[
+                { icon: FaCode, text: 'I write clean, readable code — not just code that works' },
+                { icon: FaRocket, text: 'I focus on performance and mobile-first from day one' },
+                { icon: FaHeart, text: 'I care about the end user, not just the deadline' },
+              ].map(({ icon: Icon, text }) => (
+                <div key={text} className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <Icon className="text-primary mt-0.5 shrink-0" />
+                  <p className="text-gray-300 text-sm">{text}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

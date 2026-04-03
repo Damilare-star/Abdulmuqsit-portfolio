@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaChevronDown, FaUser } from 'react-icons/fa';
 
 const ProjectCard = ({ project, index }) => {
   const [expanded, setExpanded] = useState(false);
@@ -19,10 +19,11 @@ const ProjectCard = ({ project, index }) => {
           src={project.image}
           alt={project.title}
           loading="lazy"
-          className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-44 sm:h-52 object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-        {/* Live link badge on image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/30 to-transparent" />
+
+        {/* Live badge */}
         <a
           href={project.liveDemo}
           target="_blank"
@@ -30,30 +31,38 @@ const ProjectCard = ({ project, index }) => {
           className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 bg-primary/90 backdrop-blur-sm rounded-full text-white text-xs font-semibold hover:bg-primary transition-colors"
           aria-label={`View ${project.title} live`}
         >
-          <FaExternalLinkAlt className="text-[10px]" />
+          <FaExternalLinkAlt className="text-[9px]" />
           Live
         </a>
+
+        {/* Role badge */}
+        {project.role && (
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-black/60 backdrop-blur-sm rounded-full text-gray-300 text-xs">
+            <FaUser className="text-[9px]" />
+            {project.role}
+          </div>
+        )}
       </div>
 
       {/* Content */}
       <div className="p-5 sm:p-6 flex flex-col flex-1">
-        <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white group-hover:text-primary transition-colors">
+        <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">
           {project.title}
         </h3>
 
-        <p className="text-gray-400 text-sm sm:text-base mb-4 leading-relaxed">
+        <p className="text-gray-400 text-sm mb-4 leading-relaxed">
           {project.description}
         </p>
 
         {/* Case Study Toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-2 text-primary text-sm font-semibold mb-4 hover:text-secondary transition-colors w-fit"
+          className="flex items-center gap-2 text-primary text-xs font-semibold mb-3 hover:text-secondary transition-colors w-fit"
           aria-expanded={expanded}
         >
-          Case Study
+          View Case Study
           <motion.span animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
-            <FaChevronDown className="text-xs" />
+            <FaChevronDown className="text-[10px]" />
           </motion.span>
         </button>
 
@@ -63,17 +72,21 @@ const ProjectCard = ({ project, index }) => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25 }}
               className="overflow-hidden mb-4"
             >
-              <div className="space-y-3 p-4 bg-white/5 rounded-xl border border-white/10">
+              <div className="space-y-3 p-4 bg-white/5 rounded-xl border border-white/10 text-xs">
                 <div>
-                  <span className="text-xs font-bold text-primary uppercase tracking-wider">Problem</span>
-                  <p className="text-gray-400 text-sm mt-1">{project.problem}</p>
+                  <span className="font-bold text-red-400 uppercase tracking-wider">Problem</span>
+                  <p className="text-gray-400 mt-1 leading-relaxed">{project.problem}</p>
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">Solution</span>
-                  <p className="text-gray-400 text-sm mt-1">{project.solution}</p>
+                  <span className="font-bold text-primary uppercase tracking-wider">Solution</span>
+                  <p className="text-gray-400 mt-1 leading-relaxed">{project.solution}</p>
+                </div>
+                <div>
+                  <span className="font-bold text-green-400 uppercase tracking-wider">Result</span>
+                  <p className="text-gray-400 mt-1 leading-relaxed">{project.result}</p>
                 </div>
               </div>
             </motion.div>
@@ -81,11 +94,11 @@ const ProjectCard = ({ project, index }) => {
         </AnimatePresence>
 
         {/* Tech stack */}
-        <div className="flex flex-wrap gap-2 mb-5 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
           {project.tech.map((tech) => (
             <span
               key={tech}
-              className="px-2.5 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full border border-primary/30"
+              className="px-2.5 py-1 text-xs font-medium bg-primary/15 text-primary rounded-full border border-primary/25"
             >
               {tech}
             </span>
@@ -98,7 +111,7 @@ const ProjectCard = ({ project, index }) => {
             href={project.liveDemo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary to-secondary rounded-xl text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/40 transition-all duration-300 hover:scale-105"
           >
             <FaExternalLinkAlt className="text-xs" />
             Live Demo
@@ -107,9 +120,9 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-3 glass-hover rounded-xl text-white text-sm font-semibold transition-all duration-300 border border-white/10"
+            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 border border-white/15 hover:border-white/30 rounded-xl text-white text-sm font-semibold transition-all duration-300"
           >
-            <FaGithub className="text-lg" />
+            <FaGithub className="text-base" />
             Code
           </a>
         </div>
