@@ -10,14 +10,14 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      <div className="container mx-auto px-6 z-10">
+      <div className="container mx-auto px-4 sm:px-6 z-10">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white dark:text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white leading-tight">
               Hi, I'm{' '}
               <span className="gradient-text">
                 Abdulmuqsit Abdulquadri
@@ -29,7 +29,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-4xl text-gray-600 dark:text-gray-300 mb-8 h-20"
+            className="text-xl sm:text-2xl md:text-4xl text-gray-300 mb-8 h-16 sm:h-20"
           >
             <TypeAnimation
               sequence={[
@@ -52,7 +52,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 sm:mb-12 max-w-2xl mx-auto px-2"
           >
             Crafting beautiful, responsive, and user-friendly web experiences with modern technologies
           </motion.p>
@@ -61,17 +61,17 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           >
             <button
               onClick={scrollToProjects}
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-2xl text-white font-semibold text-lg hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-2xl text-white font-semibold text-lg hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
             >
               View Projects
             </button>
             <Link
               to="/contact"
-              className="px-8 py-4 glass glass-hover rounded-2xl text-gray-900 dark:text-white font-semibold text-lg"
+              className="w-full sm:w-auto px-8 py-4 glass glass-hover rounded-2xl text-white font-semibold text-lg text-center"
             >
               Contact Me
             </Link>

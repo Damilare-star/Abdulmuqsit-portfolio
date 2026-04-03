@@ -48,10 +48,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/abdulmuqsit', label: 'GitHub', color: '#333' },
+    { icon: FaGithub, url: "https://github.com/damilareabdulquadri76", label: 'GitHub', color: '#333' },
     { icon: FaLinkedin, url: 'https://linkedin.com/in/abdulmuqsit-abdulquadri', label: 'LinkedIn', color: '#0077B5' },
     { icon: FaTwitter, url: 'https://twitter.com/abdulmuqsit', label: 'Twitter', color: '#1DA1F2' },
-    { icon: FaEnvelope, url: 'mailto:abdulmuqsitabdulquadri@gmail.com', label: 'Email', color: '#EA4335' }
+    { icon: FaEnvelope, url: "mailto:abdulmuqsitabdulquadri@gmail.com", label: 'Email', color: '#EA4335' }
   ];
 
   return (
